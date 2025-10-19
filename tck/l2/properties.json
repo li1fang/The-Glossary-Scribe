@@ -1,0 +1,34 @@
+{
+  "deterministic_runs": 3,
+  "checks": [
+    {
+      "name": "aliases_unique",
+      "type": "uniqueness",
+      "path": "$[*].aliases[*]"
+    },
+    {
+      "name": "id_snake_case",
+      "type": "regex",
+      "path": "$[*].id",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    {
+      "name": "topics_format",
+      "type": "regex",
+      "path": "$[*].engineering_bindings.topics[*]",
+      "pattern": "^[a-z]+\\.[a-z0-9_]+\\.[vV][0-9]+(\\.[0-9]+)?$"
+    },
+    {
+      "name": "aliases_no_canonical_zh",
+      "type": "not_in",
+      "path": "$[*].aliases[*]",
+      "against": "$[*].canonical_zh"
+    },
+    {
+      "name": "aliases_no_canonical_en",
+      "type": "not_in",
+      "path": "$[*].aliases[*]",
+      "against": "$[*].canonical_en"
+    }
+  ]
+}

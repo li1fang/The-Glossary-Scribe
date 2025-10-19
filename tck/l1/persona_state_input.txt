@@ -1,0 +1,1 @@
+persona_state，中文名叫“身份状态”，也叫“Persona”或“身份画像”。工程上对应的主题是 ps.persona_state.v2.0。工程口径：PS 本体与运行态统一表述，主题沿用 v2.0。

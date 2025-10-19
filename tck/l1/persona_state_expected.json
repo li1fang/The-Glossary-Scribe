@@ -1,0 +1,20 @@
+[
+  {
+    "id": "persona_state",
+    "canonical_zh": "身份状态",
+    "canonical_en": "Persona State",
+    "aliases": [
+      "Persona",
+      "身份画像"
+    ],
+    "engineering_bindings": {
+      "topics": [
+        "ps.persona_state.v2.0"
+      ],
+      "schemas": [
+        "schemas/ps/events/ps.persona_state.v2.0.schema.json"
+      ]
+    },
+    "rationale": "PS 本体与运行态统一表述，主题沿用 v2.0"
+  }
+]

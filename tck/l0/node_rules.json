@@ -1,0 +1,19 @@
+{
+  "required_fields": [
+    "id",
+    "canonical_zh",
+    "canonical_en",
+    "aliases",
+    "engineering_bindings",
+    "rationale"
+  ],
+  "id_pattern": "^[a-z][a-z0-9_]*$",
+  "topic_pattern": "^[a-z]+\\.[a-z0-9_]+\\.[vV][0-9]+(?:\\.[0-9]+)?$",
+  "max_aliases": 10,
+  "max_len": {
+    "id": 64,
+    "canonical_zh": 64,
+    "canonical_en": 64
+  },
+  "forbid_alias_equals_canonical": true
+}
