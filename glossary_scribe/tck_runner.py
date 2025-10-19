@@ -25,8 +25,23 @@ def run_l1(node: NodeMolecule) -> None:
         epath = os.path.join(base, f"{name}_expected.json")
         assert os.path.exists(epath), f"expected not found for {name}"
         text = _read(ipath)
-        out = node.invoke(text)
         expected = _json(epath)
+        if isinstance(expected, dict) and "expect_error" in expected:
+            try:
+                node.invoke(text)
+            except Exception as exc:
+                assert exc.__class__.__name__ == expected["expect_error"], (
+                    f"{name} expected {expected['expect_error']} but got {exc.__class__.__name__}"
+                )
+                message_contains = expected.get("message_contains")
+                if message_contains is not None:
+                    assert message_contains in str(exc), (
+                        f"{name} expected error message containing '{message_contains}'"
+                    )
+            else:
+                raise AssertionError(f"{name} expected to raise {expected['expect_error']}")
+            continue
+        out = node.invoke(text)
         # Compare with normalization
         assert isinstance(out, list) and isinstance(expected, list), "both outputs must be lists"
         assert len(out) == len(expected), f"length mismatch for {name}"
