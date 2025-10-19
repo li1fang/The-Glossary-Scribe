@@ -114,6 +114,8 @@ def parse_text_to_terms(text: str) -> list[dict[str, Any]]:
     canonical_en = _find_canonical_en(text, id_guess) or id_guess.replace('_',' ').title()
     aliases = _find_aliases(text, canonical_zh, canonical_en)
     topics = _find_topics(text)
+    if not topics:
+        raise ValueError("No topics found in input text; cannot satisfy L0 topic requirement")
     schemas = _derive_schemas_from_topics(topics)
     rationale = None
     # Try to find rationale cues like 工程口径/理由/说明
